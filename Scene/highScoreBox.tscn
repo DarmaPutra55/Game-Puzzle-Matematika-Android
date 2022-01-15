@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Font/DynamicFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Script/highScoreBox.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 0.944
+anchor_bottom = 0.117
+margin_right = 0.319946
+margin_bottom = 0.23999
+rect_min_size = Vector2( 680, 150 )
+mouse_filter = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.627451, 0.635294, 0.964706, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+margin_right = 220.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 220, 0 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/PanelContainer"]
+margin_right = 220.0
+margin_bottom = 150.0
+color = Color( 0.290196, 0.337255, 0.560784, 1 )
+
+[node name="StageText" type="Label" parent="HBoxContainer/PanelContainer"]
+margin_right = 220.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Stage 1"
+align = 1
+valign = 1
+
+[node name="StageScoreText" type="Label" parent="HBoxContainer"]
+margin_left = 224.0
+margin_right = 680.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "2000000"
+align = 1
+valign = 1

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Font/DynamicFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Script/stageSelect.gd" type="Script" id=2]
+[ext_resource path="res://Style/stageButtonRound.tres" type="StyleBox" id=3]
+[ext_resource path="res://Style/stageButtonRoundDisable.tres" type="StyleBox" id=4]
+
+[node name="Control" type="Control"]
+anchor_right = 0.278
+anchor_bottom = 0.117
+margin_right = -0.160019
+margin_bottom = 0.23999
+rect_min_size = Vector2( 200, 150 )
+mouse_filter = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+text = "Stage"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]

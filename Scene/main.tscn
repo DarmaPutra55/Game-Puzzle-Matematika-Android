@@ -1,0 +1,426 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Script/Global.gd" type="Script" id=1]
+[ext_resource path="res://Scene/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Script/Main.gd" type="Script" id=3]
+[ext_resource path="res://Font/DynamicFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scene/pauseWindow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Font/DynamicFontSmaller.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Script/StatusUpdate.gd" type="Script" id=7]
+[ext_resource path="res://Script/Text.gd" type="Script" id=8]
+[ext_resource path="res://Scene/victoryWindow.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scene/gameOver.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Music/StageMusic.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Bg/backgroundSpace.png" type="Texture" id=13]
+[ext_resource path="res://Script/AnimatedBackground.gd" type="Script" id=14]
+[ext_resource path="res://Sound/game_over.wav" type="AudioStream" id=15]
+[ext_resource path="res://Font/DynamicFonteXTRA.tres" type="DynamicFont" id=16]
+[ext_resource path="res://Scene/wall.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Font/DynamicFontLarge.tres" type="DynamicFont" id=18]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[node name="Game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -720.0
+margin_bottom = -1280.0
+rect_min_size = Vector2( 720, 1280 )
+mouse_filter = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -706.0
+margin_bottom = -1266.0
+rect_min_size = Vector2( 720, 1280 )
+mouse_filter = 1
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PraBackground" type="ParallaxBackground" parent="PanelContainer"]
+script = ExtResource( 14 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="PanelContainer/PraBackground"]
+motion_mirroring = Vector2( 0, 1280 )
+
+[node name="Bg" type="Sprite" parent="PanelContainer/PraBackground/ParallaxLayer"]
+position = Vector2( 360, 640 )
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Timer" type="Node2D" parent="."]
+
+[node name="QuestionTimer" type="Timer" parent="Timer"]
+wait_time = 6.0
+one_shot = true
+
+[node name="ClearTimer" type="Timer" parent="Timer"]
+
+[node name="CooldownTimer" type="Timer" parent="Timer"]
+wait_time = 2.0
+one_shot = true
+
+[node name="AnswerTimer" type="Timer" parent="Timer"]
+wait_time = 4.0
+one_shot = true
+
+[node name="VictoryTimer" type="Timer" parent="Timer"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Global" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="MainControl" type="Control" parent="."]
+margin_right = 720.0
+margin_bottom = 1280.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullPanel" type="VBoxContainer" parent="MainControl"]
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Question" type="Node2D" parent="MainControl/FullPanel"]
+
+[node name="QuestionPanel" type="PanelContainer" parent="MainControl/FullPanel/Question"]
+margin_right = 720.0
+margin_bottom = 200.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="MainControl/FullPanel/Question/QuestionPanel"]
+margin_right = 720.0
+margin_bottom = 200.0
+color = Color( 0.368627, 0.521569, 0.619608, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="MainControl/FullPanel/Question/QuestionPanel/ColorRect"]
+anchor_left = 0.91
+anchor_right = 0.997
+anchor_bottom = 0.475
+margin_left = -0.200012
+margin_right = 0.159973
+margin_bottom = -7.62939e-06
+custom_fonts/font = ExtResource( 18 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "III"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestionText" type="Label" parent="MainControl/FullPanel/Question/QuestionPanel"]
+margin_top = 44.0
+margin_right = 720.0
+margin_bottom = 155.0
+custom_fonts/font = ExtResource( 16 )
+text = "Test"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="EnemySpawnPoint" type="Node2D" parent="MainControl/FullPanel"]
+
+[node name="SpawnContainer" type="PanelContainer" parent="MainControl/FullPanel/EnemySpawnPoint"]
+margin_top = 200.0
+margin_right = 720.0
+custom_styles/panel = SubResource( 8 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftSpawn" type="Node2D" parent="MainControl/FullPanel/EnemySpawnPoint/SpawnContainer"]
+position = Vector2( 120, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LeftSpawnText" type="Label" parent="MainControl/FullPanel/EnemySpawnPoint/SpawnContainer/LeftSpawn"]
+margin_left = -60.0
+margin_top = 30.0
+margin_right = 24.0
+margin_bottom = 141.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = ExtResource( 16 )
+text = "0"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MiddleSpawn" type="Node2D" parent="MainControl/FullPanel/EnemySpawnPoint/SpawnContainer"]
+position = Vector2( 360, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MiddleSpawnText" type="Label" parent="MainControl/FullPanel/EnemySpawnPoint/SpawnContainer/MiddleSpawn"]
+margin_left = -35.0
+margin_top = 30.0
+margin_right = 4.0
+margin_bottom = 141.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = ExtResource( 16 )
+text = "0"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightSpawn" type="Node2D" parent="MainControl/FullPanel/EnemySpawnPoint/SpawnContainer"]
+position = Vector2( 580, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RightSpawnText" type="Label" parent="MainControl/FullPanel/EnemySpawnPoint/SpawnContainer/RightSpawn"]
+margin_left = -20.0
+margin_top = 30.0
+margin_right = 44.0
+margin_bottom = 141.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = ExtResource( 16 )
+text = "0"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Node2D" parent="MainControl/FullPanel"]
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MainControl/FullPanel/Button"]
+margin_top = 200.0
+margin_right = 720.0
+margin_bottom = 1280.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpperButton" type="Button" parent="MainControl/FullPanel/Button/ButtonContainer"]
+margin_right = 720.0
+margin_bottom = 800.0
+rect_min_size = Vector2( 0, 800 )
+flat = true
+
+[node name="StatusContainer" type="VBoxContainer" parent="MainControl/FullPanel/Button/ButtonContainer/UpperButton"]
+anchor_left = 0.011
+anchor_top = 0.325
+anchor_right = 0.153
+anchor_bottom = 0.545
+margin_left = 2.08
+margin_right = -0.160011
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrentStage" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/UpperButton/StatusContainer"]
+margin_right = 99.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 6 )
+text = "Stage"
+
+[node name="TimeLimit" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/UpperButton/StatusContainer"]
+margin_top = 60.0
+margin_right = 99.0
+margin_bottom = 116.0
+custom_fonts/font = ExtResource( 6 )
+text = "Time:"
+
+[node name="PlayerHp" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/UpperButton/StatusContainer"]
+margin_top = 120.0
+margin_right = 99.0
+margin_bottom = 176.0
+custom_fonts/font = ExtResource( 6 )
+text = "HP:"
+
+[node name="QuestTimer" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/UpperButton"]
+anchor_left = 0.468
+anchor_top = 0.902
+anchor_right = 0.54
+anchor_bottom = 0.995
+margin_left = 0.039978
+margin_top = -0.200012
+margin_right = 0.200012
+margin_bottom = -6.10352e-05
+custom_fonts/font = ExtResource( 6 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonSeperator" type="PanelContainer" parent="MainControl/FullPanel/Button/ButtonContainer"]
+margin_top = 804.0
+margin_right = 720.0
+margin_bottom = 818.0
+
+[node name="LowerButton" type="HBoxContainer" parent="MainControl/FullPanel/Button/ButtonContainer"]
+margin_top = 822.0
+margin_right = 720.0
+margin_bottom = 1157.0
+rect_min_size = Vector2( 0, 335 )
+
+[node name="LeftButton" type="Button" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton"]
+margin_right = 237.0
+margin_bottom = 335.0
+rect_min_size = Vector2( 237, 0 )
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton/LeftButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -200.0
+margin_bottom = -321.0
+rect_min_size = Vector2( 240, 335 )
+custom_fonts/font = ExtResource( 4 )
+text = "A"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MiddleButton" type="Button" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton"]
+margin_left = 241.0
+margin_right = 477.0
+margin_bottom = 335.0
+rect_min_size = Vector2( 236, 0 )
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton/MiddleButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 240, 335 )
+custom_fonts/font = ExtResource( 4 )
+text = "B"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightButton" type="Button" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton"]
+margin_left = 481.0
+margin_right = 718.0
+margin_bottom = 335.0
+rect_min_size = Vector2( 237, 0 )
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton/RightButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 230, 335 )
+custom_fonts/font = ExtResource( 4 )
+text = "C"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="MainControl" instance=ExtResource( 2 )]
+
+[node name="StartPosition" type="Position2D" parent="MainControl/Player"]
+position = Vector2( 360, 1120 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="GameoverWindow" parent="." instance=ExtResource( 11 )]
+margin_left = 72.0
+margin_top = 528.0
+margin_right = 68.08
+margin_bottom = 527.84
+mouse_filter = 1
+
+[node name="PauseWindow" parent="." instance=ExtResource( 5 )]
+margin_left = 40.0
+margin_top = 512.0
+margin_right = 39.92
+margin_bottom = 511.68
+mouse_filter = 1
+
+[node name="VictoryWindow" parent="." instance=ExtResource( 10 )]
+anchor_top = 0.287
+anchor_bottom = 0.741
+margin_top = 0.640015
+margin_bottom = -0.480103
+mouse_filter = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -4.0
+autoplay = true
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 15 )
+
+[node name="Wall" parent="." instance=ExtResource( 17 )]
+
+[connection signal="timeout" from="Timer/QuestionTimer" to="." method="_on_QuestionTimer_timeout"]
+[connection signal="timeout" from="Timer/ClearTimer" to="." method="_on_ClearTimer_timeout"]
+[connection signal="timeout" from="Timer/CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
+[connection signal="timeout" from="Timer/AnswerTimer" to="." method="_on_AnswerTimer_timeout"]
+[connection signal="timeout" from="Timer/VictoryTimer" to="." method="_on_VictoryTimer_timeout"]
+[connection signal="pressed" from="MainControl/FullPanel/Question/QuestionPanel/ColorRect/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="MainControl/FullPanel/Button/ButtonContainer/UpperButton" to="." method="_on_UpperButton_pressed"]
+[connection signal="pressed" from="MainControl/FullPanel/Button/ButtonContainer/LowerButton/LeftButton" to="." method="_on_LeftButton_pressed"]
+[connection signal="pressed" from="MainControl/FullPanel/Button/ButtonContainer/LowerButton/MiddleButton" to="." method="_on_MiddleButton_pressed"]
+[connection signal="pressed" from="MainControl/FullPanel/Button/ButtonContainer/LowerButton/RightButton" to="." method="_on_RightButton_pressed"]
+[connection signal="hit" from="MainControl/Player" to="." method="_on_Player_hit"]

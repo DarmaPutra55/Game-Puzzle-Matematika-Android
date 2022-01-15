@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Script/StageButtonGroup.gd" type="Script" id=1]
+[ext_resource path="res://Scene/stageButton.tscn" type="PackedScene" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 0.117
+margin_bottom = 0.23999
+rect_min_size = Vector2( 0, 150 )
+mouse_filter = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+margin_right = 720.0
+margin_bottom = 150.0
+mouse_filter = 1
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+margin_left = 20.0
+margin_right = 700.0
+margin_bottom = 150.0
+custom_constants/separation = 40
+
+[node name="Control" parent="Panel/MarginContainer/HBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 200.0
+margin_bottom = 150.0
+
+[node name="Control2" parent="Panel/MarginContainer/HBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 240.0
+margin_right = 440.0
+margin_bottom = 150.0
+
+[node name="Control3" parent="Panel/MarginContainer/HBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 480.0
+margin_right = 680.0
+margin_bottom = 150.0

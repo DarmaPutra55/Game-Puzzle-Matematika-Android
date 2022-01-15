@@ -1,0 +1,188 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Font/DynamicFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Font/DynamicFontLarge.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Script/victoryWindow.gd" type="Script" id=3]
+[ext_resource path="res://Style/ButtonBlue.tres" type="StyleBox" id=5]
+[ext_resource path="res://Style/ButtonBlueDark.tres" type="StyleBox" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="Control" type="Popup"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 0.453
+margin_bottom = 0.159973
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.290196, 0.803922, 0.980392, 1 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_right = 720.0
+margin_bottom = 580.0
+custom_constants/separation = 25
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+margin_right = 720.0
+margin_bottom = 89.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/VBoxContainer/PanelContainer"]
+margin_right = 720.0
+margin_bottom = 89.0
+color = Color( 0.368627, 0.521569, 0.619608, 1 )
+
+[node name="TextPause" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer"]
+margin_right = 720.0
+margin_bottom = 89.0
+custom_fonts/font = ExtResource( 2 )
+text = "Selamat Kamu Menang"
+align = 1
+
+[node name="ContainerText" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 114.0
+margin_right = 720.0
+margin_bottom = 465.0
+custom_constants/margin_right = 40
+custom_constants/margin_left = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ContainerText"]
+margin_left = 40.0
+margin_right = 680.0
+margin_bottom = 351.0
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ContainerText/VBoxContainer"]
+margin_right = 640.0
+margin_bottom = 67.0
+custom_fonts/font = ExtResource( 1 )
+text = "Skor Nyawa: "
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/ContainerText/VBoxContainer"]
+margin_top = 71.0
+margin_right = 640.0
+margin_bottom = 138.0
+custom_fonts/font = ExtResource( 1 )
+text = "Skor Waktu: "
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/ContainerText/VBoxContainer"]
+margin_top = 142.0
+margin_right = 640.0
+margin_bottom = 209.0
+custom_fonts/font = ExtResource( 1 )
+text = "Skor Extra:  "
+
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/ContainerText/VBoxContainer"]
+margin_top = 213.0
+margin_right = 640.0
+margin_bottom = 280.0
+custom_fonts/font = ExtResource( 1 )
+text = "Skor Total:  "
+
+[node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/ContainerText/VBoxContainer"]
+margin_top = 284.0
+margin_right = 640.0
+margin_bottom = 351.0
+custom_fonts/font = ExtResource( 1 )
+text = "Skor Tertinggi: "
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 490.0
+margin_right = 720.0
+margin_bottom = 560.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer2"]
+margin_left = 20.0
+margin_right = 700.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Berikutnya" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_right = 240.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 240, 0 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/normal = ExtResource( 5 )
+
+[node name="BerikutnyaText" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer/Berikutnya"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Berikutnya"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ulang" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 260.0
+margin_right = 460.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 200, 0 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/normal = ExtResource( 5 )
+
+[node name="UlangText" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer/Ulang"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Ulang"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 480.0
+margin_right = 680.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 200, 0 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/normal = ExtResource( 5 )
+
+[node name="MenuText" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer/Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Menu"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer/Berikutnya" to="." method="_on_Berikutnya_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer/Ulang" to="." method="_on_Ulang_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer/Menu" to="." method="_on_Menu_pressed"]

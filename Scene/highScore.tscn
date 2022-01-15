@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="Theme" id=3]
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = null
+HScrollBar/styles/grabber_highlight = null
+HScrollBar/styles/grabber_pressed = null
+HScrollBar/styles/scroll = SubResource( 1 )
+HScrollBar/styles/scroll_focus = null
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = null
+VScrollBar/styles/grabber_highlight = null
+VScrollBar/styles/grabber_pressed = null
+VScrollBar/styles/scroll = SubResource( 2 )
+VScrollBar/styles/scroll_focus = null
+
+[node name="Control" type="ScrollContainer"]
+anchor_right = 0.989
+anchor_bottom = 0.8
+margin_right = 7.91998
+margin_bottom = 1.0
+rect_min_size = Vector2( 720, 1025 )
+mouse_filter = 1
+theme = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 720.0
+margin_bottom = 1025.0
+rect_min_size = Vector2( 720, 1025 )
+mouse_filter = 1
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_right = 700.0
+margin_bottom = 1025.0
+rect_min_size = Vector2( 680, 1025 )
+custom_constants/separation = 10

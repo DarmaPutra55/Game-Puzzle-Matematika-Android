@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Image/TestTutorial1.jpg" type="Texture" id=1]
+[ext_resource path="res://Image/TestTutorial2.jpg" type="Texture" id=2]
+[ext_resource path="res://Image/TestTutorial3.jpg" type="Texture" id=3]
+[ext_resource path="res://Image/TestTutorial4.jpg" type="Texture" id=4]
+[ext_resource path="res://Font/DynamicFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Style/ButtonBlue.tres" type="StyleBox" id=6]
+[ext_resource path="res://Style/ButtonBlueDark.tres" type="StyleBox" id=7]
+[ext_resource path="res://Image/TestTutorial5.jpg" type="Texture" id=8]
+[ext_resource path="res://Script/TutorialPopup.gd" type="Script" id=9]
+[ext_resource path="res://Font/DynamicFonteXTRA.tres" type="DynamicFont" id=10]
+
+[node name="TutorialPopup" type="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainImageShow" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Tutorial1" type="TextureRect" parent="MainImageShow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial2" type="TextureRect" parent="MainImageShow"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial3" type="TextureRect" parent="MainImageShow"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial4" type="TextureRect" parent="MainImageShow"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial5" type="TextureRect" parent="MainImageShow"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnNext" type="Button" parent="."]
+anchor_left = 0.91
+anchor_top = 0.797
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.200012
+margin_top = -0.160034
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 5 )
+text = ">>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnPrev" type="Button" parent="."]
+anchor_top = 0.797
+anchor_right = 0.092
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -0.160034
+margin_right = -0.240005
+rect_min_size = Vector2( 65, 260 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 5 )
+text = "<<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnClose" type="Button" parent="."]
+anchor_right = 0.139
+anchor_bottom = 0.087
+margin_right = -0.0800095
+margin_bottom = -0.360008
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
+text = "X"
+
+[connection signal="pressed" from="BtnNext" to="." method="_on_BtnNext_pressed"]
+[connection signal="pressed" from="BtnPrev" to="." method="_on_BtnPrev_pressed"]
+[connection signal="pressed" from="BtnClose" to="." method="_on_BtnClose_pressed"]

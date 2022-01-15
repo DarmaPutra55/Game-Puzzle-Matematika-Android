@@ -1,0 +1,331 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Script/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Font/DynamicFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Font/DynamicFontSmaller.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scene/highScore.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Music/MainMenuMusic.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Scene/optionMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Font/DynamicFontLarge.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Style/ButtonBlue.tres" type="StyleBox" id=8]
+[ext_resource path="res://Bg/backgroundSpace.png" type="Texture" id=9]
+[ext_resource path="res://Script/AnimatedBackground.gd" type="Script" id=10]
+[ext_resource path="res://Style/ButtonBlueDark.tres" type="StyleBox" id=11]
+[ext_resource path="res://Scene/credit.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scene/wall.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scene/TutorialPopup.tscn" type="PackedScene" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="Theme" id=8]
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = null
+HScrollBar/styles/grabber_highlight = null
+HScrollBar/styles/grabber_pressed = null
+HScrollBar/styles/scroll = SubResource( 6 )
+HScrollBar/styles/scroll_focus = null
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = null
+VScrollBar/styles/grabber_highlight = null
+VScrollBar/styles/grabber_pressed = null
+VScrollBar/styles/scroll = SubResource( 7 )
+VScrollBar/styles/scroll_focus = null
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 720, 1280 )
+mouse_filter = 1
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PraBackground" type="ParallaxBackground" parent="PanelContainer"]
+script = ExtResource( 10 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="PanelContainer/PraBackground"]
+motion_mirroring = Vector2( 0, 1280 )
+
+[node name="Bg" type="Sprite" parent="PanelContainer/PraBackground/ParallaxLayer"]
+modulate = Color( 0.392157, 0.392157, 0.392157, 1 )
+light_mask = 0
+position = Vector2( 360, 640 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect"]
+margin_right = 720.0
+margin_bottom = 1280.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/PanelContainer"]
+margin_right = 720.0
+margin_bottom = 1280.0
+custom_constants/separation = 30
+
+[node name="MainMenuTextPanel" type="PanelContainer" parent="ColorRect/PanelContainer/VBoxContainer"]
+margin_right = 720.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/PanelContainer/VBoxContainer/MainMenuTextPanel"]
+margin_right = 720.0
+margin_bottom = 100.0
+color = Color( 0.368627, 0.521569, 0.619608, 1 )
+
+[node name="Label" type="Label" parent="ColorRect/PanelContainer/VBoxContainer/MainMenuTextPanel"]
+margin_right = 720.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 7 )
+text = "Main Menu"
+align = 1
+valign = 1
+
+[node name="PanelMenu" type="PanelContainer" parent="ColorRect/PanelContainer/VBoxContainer"]
+margin_top = 130.0
+margin_right = 720.0
+margin_bottom = 1155.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 5 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/PanelContainer/VBoxContainer/PanelMenu"]
+margin_right = 720.0
+margin_bottom = 1025.0
+rect_min_size = Vector2( 0, 1025 )
+mouse_filter = 1
+theme = SubResource( 8 )
+
+[node name="StageArea" type="VBoxContainer" parent="ColorRect/PanelContainer/VBoxContainer/PanelMenu/ScrollContainer"]
+margin_right = 720.0
+margin_bottom = 1025.0
+rect_min_size = Vector2( 720, 1025 )
+custom_constants/separation = 10
+
+[node name="TextSD" type="Label" parent="ColorRect/PanelContainer/VBoxContainer/PanelMenu/ScrollContainer/StageArea"]
+margin_right = 720.0
+margin_bottom = 56.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 3 )
+text = "SD"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StageAreaSD" type="VBoxContainer" parent="ColorRect/PanelContainer/VBoxContainer/PanelMenu/ScrollContainer/StageArea"]
+margin_top = 66.0
+margin_right = 720.0
+margin_bottom = 266.0
+rect_min_size = Vector2( 720, 200 )
+rect_pivot_offset = Vector2( -859, -196 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextSMP" type="Label" parent="ColorRect/PanelContainer/VBoxContainer/PanelMenu/ScrollContainer/StageArea"]
+margin_top = 276.0
+margin_right = 720.0
+margin_bottom = 332.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 3 )
+text = "Smp"
+align = 1
+uppercase = true
+
+[node name="StageAreaSMP" type="VBoxContainer" parent="ColorRect/PanelContainer/VBoxContainer/PanelMenu/ScrollContainer/StageArea"]
+margin_top = 342.0
+margin_right = 720.0
+margin_bottom = 542.0
+rect_min_size = Vector2( 720, 200 )
+rect_pivot_offset = Vector2( -859, -196 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextSMA" type="Label" parent="ColorRect/PanelContainer/VBoxContainer/PanelMenu/ScrollContainer/StageArea"]
+margin_top = 552.0
+margin_right = 720.0
+margin_bottom = 608.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 3 )
+text = "sma"
+align = 1
+uppercase = true
+
+[node name="StageAreaSMA" type="VBoxContainer" parent="ColorRect/PanelContainer/VBoxContainer/PanelMenu/ScrollContainer/StageArea"]
+margin_top = 618.0
+margin_right = 720.0
+margin_bottom = 818.0
+rect_min_size = Vector2( 720, 200 )
+rect_pivot_offset = Vector2( -859, -196 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuHighScore" parent="ColorRect/PanelContainer/VBoxContainer/PanelMenu" instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 720.0
+margin_bottom = 1025.0
+
+[node name="OptionMenu" parent="ColorRect/PanelContainer/VBoxContainer/PanelMenu" instance=ExtResource( 6 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 720.0
+margin_bottom = 1025.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/PanelContainer/VBoxContainer"]
+margin_top = 1185.0
+margin_right = 720.0
+margin_bottom = 1280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/PanelContainer/VBoxContainer/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 715.0
+margin_bottom = 90.0
+custom_constants/separation = 10
+
+[node name="StageMenuButton" type="Button" parent="ColorRect/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_right = 230.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 230, 80 )
+size_flags_vertical = 2
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = ExtResource( 11 )
+custom_styles/normal = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="ColorRect/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/StageMenuButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "Stage"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighscoreMenuButton" type="Button" parent="ColorRect/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 240.0
+margin_right = 470.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 230, 80 )
+size_flags_vertical = 2
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = ExtResource( 11 )
+custom_styles/normal = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="ColorRect/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HighscoreMenuButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "Highscore"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionMenuButton" type="Button" parent="ColorRect/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 480.0
+margin_right = 710.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 230, 80 )
+size_flags_vertical = 2
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = ExtResource( 11 )
+custom_styles/normal = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="ColorRect/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/OptionMenuButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "Opsi"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditPopup" parent="." instance=ExtResource( 12 )]
+
+[node name="TutorialPopup" parent="." instance=ExtResource( 14 )]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+
+[node name="Wall" parent="." instance=ExtResource( 13 )]
+position = Vector2( 0, -1280 )
+
+[connection signal="pressed" from="ColorRect/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/StageMenuButton" to="." method="_on_StageMenuButton_pressed"]
+[connection signal="pressed" from="ColorRect/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/HighscoreMenuButton" to="." method="_on_HighscoreMenuButton_pressed"]
+[connection signal="pressed" from="ColorRect/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/OptionMenuButton" to="." method="_on_OptionMenuButton_pressed"]

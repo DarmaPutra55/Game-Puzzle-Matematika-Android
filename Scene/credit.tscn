@@ -1,0 +1,155 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Font/DynamicFonteXTRA.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Font/DynamicFontLarge.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Style/ButtonBlueDark.tres" type="StyleBox" id=3]
+[ext_resource path="res://Style/ButtonBlue.tres" type="StyleBox" id=4]
+[ext_resource path="res://Script/credit.gd" type="Script" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="Theme" id=2]
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = SubResource( 3 )
+HScrollBar/styles/grabber_highlight = SubResource( 4 )
+HScrollBar/styles/grabber_pressed = SubResource( 5 )
+HScrollBar/styles/scroll = SubResource( 6 )
+HScrollBar/styles/scroll_focus = SubResource( 7 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 8 )
+VScrollBar/styles/grabber_highlight = SubResource( 9 )
+VScrollBar/styles/grabber_pressed = SubResource( 10 )
+VScrollBar/styles/scroll = SubResource( 11 )
+VScrollBar/styles/scroll_focus = SubResource( 12 )
+
+[node name="Control" type="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0313726, 0.478431, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 0.994
+margin_bottom = 7.67993
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="TextureRect/VBoxContainer"]
+margin_right = 720.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/VBoxContainer/PanelContainer"]
+margin_right = 720.0
+margin_bottom = 150.0
+color = Color( 0.0509804, 0.356863, 0.4, 1 )
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/PanelContainer"]
+margin_right = 720.0
+margin_bottom = 150.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+text = "Trimakasi Kepada"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/VBoxContainer"]
+margin_top = 154.0
+margin_right = 720.0
+margin_bottom = 1154.0
+rect_min_size = Vector2( 0, 1000 )
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/VBoxContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 700.0
+margin_bottom = 980.0
+mouse_filter = 1
+theme = SubResource( 2 )
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/MarginContainer/ScrollContainer"]
+margin_right = 4666.0
+margin_bottom = 1745.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Gambar:
+FunwithPixels - Pembuat Gambar \"Brown Asteroid\" dari https://opengameart.org/content/brown-asteroid dengan lisensi CC-BY 4.0, CC-BY-SA 4.0, CC-BY-SA 3.0 and CC-BY 3.0.
+Tummyache - Pembuat Gambar “Purple  Space  Ship” dari https://opengameart.org/content/purple-space-ship dengan lisensi CC0.
+NekotoArts - Pembuat Gambar \"2D Toon Fire Animation\" dari https://opengameart.org/content/2d-toon-fire-animation dengan lisensi CC0.
+Satur9 - Pembuat Gambar \"Space Background 01\" dari https://opengameart.org/content/space-background-01 dengan lisensi CC0.
+rubberduck - Pembuat Gambar “Free Metal-Texture-Creation-Set 06\" dari https://opengameart.org/content/free-metal-texture-creation-set-06 dengan lisensi CC0.
+
+Suara:
+HorrorPen - Pembuat Suara “Loop - House In a Forest”  dari https://opengameart.org/content/loop-house-in-a-forest dengan lisensi CC-BY 3.0.
+maxstack - Pembuat Suara “Through Space” dari https://opengameart.org/content/through-space dengan lisensi CC-BY-SA 3.0.
+qubodup - Pembuat Suara \"Crash Collision\" dari https://opengameart.org/content/crash-collision dengan lisensi CC0.
+Fupi - Pembuat Suara \"Correct  Bell\" dari https://opengameart.org/content/correct-bell dengan lisensi CC0.
+Oiboo - Pembuat Suara  “Game Over  -  Bad chest SFX” dari https://opengameart.org/content/game-over-bad-chest-sfx dengan lisensi CC0.
+
+Spesial:
+Tuhan Yang Maha Esa
+Semua Keluarga
+Pak Gde Sastrawangsa
+Ibuk Ni Putu Meina Ayuningsih"
+
+[node name="ReturnCreditBtn" type="Button" parent="TextureRect"]
+anchor_left = 0.011
+anchor_top = 0.919
+anchor_right = 0.311
+anchor_bottom = 0.993
+margin_left = 0.0799994
+margin_top = -0.320068
+margin_right = -0.920013
+margin_bottom = -0.0400391
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+text = "Kembali"
+
+[connection signal="pressed" from="TextureRect/ReturnCreditBtn" to="." method="_on_ReturnCreditBtn_pressed"]

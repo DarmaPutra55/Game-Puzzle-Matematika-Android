@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Font/DynamicFontLarge.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Script/StartLoading.gd" type="Script" id=2]
+[ext_resource path="res://Bg/wall.png" type="Texture" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="TextureRect" parent="."]
+anchor_right = 1.011
+anchor_bottom = 0.994
+margin_right = -7.92004
+margin_bottom = 7.67993
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.361
+anchor_top = 0.453
+anchor_right = 0.636
+anchor_bottom = 0.525
+margin_left = 0.0799866
+margin_top = 0.159973
+margin_right = 0.0799866
+margin_bottom = -6.10352e-05
+custom_fonts/font = ExtResource( 1 )
+text = "Loading"
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
