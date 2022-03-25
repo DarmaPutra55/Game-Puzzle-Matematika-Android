@@ -39,6 +39,7 @@ func retriveDataFromDB(stage, dataType):
 	db.close_db()
 	return queryResult
 	
+	
 func checkStageUnlocked(stage):
 	var query = null
 	var queryResult = null

@@ -163,6 +163,10 @@ func _answerSelected():
 	$Timer/ClearTimer.stop()
 	$Timer/AnswerTimer.start()
 
+func _pause():
+	get_tree().paused = true
+	pause.show()
+
 func _on_AnswerTimer_timeout():
 	player.movementLock = false
 	text.hideAllText()
@@ -193,5 +197,9 @@ func _on_VictoryTimer_timeout():
 	victory.show()
 
 func _on_Button_pressed():
-	get_tree().paused = true
-	pause.show()
+	_pause()
+	
+func _notification(what):
+	if(what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST):
+		if(get_tree().paused == false):
+			_pause()
