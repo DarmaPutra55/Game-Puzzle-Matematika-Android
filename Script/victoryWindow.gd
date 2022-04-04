@@ -38,7 +38,7 @@ func set_text():
 func _on_Berikutnya_pressed():
 	#Cek jika jumlah stage lebih besar dari angka stage berikutnya
 	if(Global.stageNumber >= (Global.stage + 1)):
-		self.hide()
+		hide()
 		wallNode.closeWall()
 		yield(wallNode, "wallDone")
 		Global.stage += 1
@@ -46,14 +46,14 @@ func _on_Berikutnya_pressed():
 
 
 func _on_Ulang_pressed():
-	self.hide()
+	hide()
 	wallNode.closeWall()
 	yield(wallNode, "wallDone")
 	get_tree().reload_current_scene()
 
 
 func _on_Menu_pressed():
-	self.hide()
+	hide()
 	wallNode.closeWall()
 	yield(wallNode, "wallDone")
 	get_tree().change_scene("res://Scene/mainMenu.tscn")

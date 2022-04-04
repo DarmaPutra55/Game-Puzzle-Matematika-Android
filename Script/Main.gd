@@ -164,8 +164,8 @@ func _answerSelected():
 	$Timer/AnswerTimer.start()
 
 func _pause():
-	get_tree().paused = true
 	pause.show()
+	get_tree().paused = true
 
 func _on_AnswerTimer_timeout():
 	player.movementLock = false
@@ -197,9 +197,10 @@ func _on_VictoryTimer_timeout():
 	victory.show()
 
 func _on_Button_pressed():
-	_pause()
+	if(!pause.visible):
+		_pause()
 	
 func _notification(what):
-	if(what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST):
-		if(get_tree().paused == false):
+	if(what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST):
+		if(levelWave < 5 && !pause.visible && !gameover.visible && !victory.visible):
 			_pause()

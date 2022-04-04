@@ -19,51 +19,48 @@ func retriveDataFromDB(stage, dataType):
 	db = SQLite.new()
 	db.path = dbPath
 	db.open_db()
-	match(dataType):
-		"Stage":
-			query = "SELECT TableQuestion.Question, TableQuestion.Answer FROM TableStage INNER JOIN TableQuestion WHERE TableStage.StageId = TableQuestion.StageId AND StageName = '"+stage+"'"
-		"StageNumber":
-			query = "SELECT count(*) as JumlahStage From TableStage"
-		"StageSD":
-			query = "SELECT count(*) as SD from TableStage WHERE Tingkat = 'SD' GROUP BY  Tingkat"
-		"StageSMP":
-			query = "SELECT count(*) as SMP from TableStage WHERE Tingkat = 'SMP' GROUP BY  Tingkat"
-		"StageSMA":
-			query = "SELECT count(*) as SMA from TableStage WHERE Tingkat = 'SMA' GROUP BY  Tingkat"
-		"StageNumberUnlocked":
-			query = "SELECT count(*) as JumlahStageUnlock From TableStage WHERE TableStage.Unlocked = 'Y'"
-		"Highscore":
-			query = "SELECT TableHighscore.HighScore FROM TableStage INNER JOIN TableHighscore WHERE TableStage.StageId = TableHighscore.StageId AND StageName = 'Stage"+String(stage)+"'"	
+	query = _dbRequestChecker(stage, dataType)
 	db.query(query)
 	queryResult = db.query_result
 	db.close_db()
 	return queryResult
 	
 	
+
+func _dbRequestChecker(stage, dataType):
+	match(dataType):
+		"UnlockedStage":
+			return "SELECT count(*) as Unlocked FROM TableStage WHERE  StageName = '"+stage+"' AND Unlocked = 'Y' Group By Unlocked"
+		"Stage":
+			return "SELECT TableQuestion.Question, TableQuestion.Answer FROM TableStage INNER JOIN TableQuestion WHERE TableStage.StageId = TableQuestion.StageId AND StageName = '"+stage+"'"
+		"StageNumber":
+			return "SELECT count(*) as JumlahStage From TableStage"
+		"StageSD":
+			return "SELECT count(*) as SD from TableStage WHERE Tingkat = 'SD' GROUP BY  Tingkat"
+		"StageSMP":
+			return "SELECT count(*) as SMP from TableStage WHERE Tingkat = 'SMP' GROUP BY  Tingkat"
+		"StageSMA":
+			return "SELECT count(*) as SMA from TableStage WHERE Tingkat = 'SMA' GROUP BY  Tingkat"
+		"StageNumberUnlocked":
+			return "SELECT count(*) as JumlahStageUnlock From TableStage WHERE TableStage.Unlocked = 'Y'"
+		"Highscore":
+			if(stage != null):
+				return "SELECT TableHighscore.HighScore FROM TableStage INNER JOIN TableHighscore WHERE TableStage.StageId = TableHighscore.StageId AND StageName = 'Stage"+String(stage)+"'"	
+			return "SELECT TableHighscore.HighScore FROM TableHighscore ORDER BY TableHighscore.StageId"
+
 func checkStageUnlocked(stage):
 	var query = null
 	var queryResult = null
 	db = SQLite.new()
 	db.path = dbPath
 	db.open_db()
-	query = "SELECT count(*) as Unlocked FROM TableStage WHERE  StageName = '"+stage+"' AND Unlocked = 'Y' Group By Unlocked"
+	query = _dbRequestChecker(stage, "UnlockedStage")
 	db.query(query)
 	queryResult = db.query_result
 	if(!queryResult.size() == 0):
 		return true
 	return false
 
-func retriveHighscore():
-	var query = null
-	var queryResult = null
-	db = SQLite.new()
-	db.path = dbPath
-	db.open_db()
-	query = "SELECT TableStage.StageName, TableHighscore.HighScore FROM TableStage INNER JOIN TableHighscore WHERE TableStage.StageId = TableHighscore.StageId"	
-	db.query(query)
-	queryResult = db.query_result
-	db.close_db()
-	return queryResult
 	
 func insertDataToDB(stage, value):
 	db = SQLite.new()

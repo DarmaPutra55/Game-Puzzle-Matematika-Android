@@ -389,10 +389,12 @@ margin_bottom = 527.84
 mouse_filter = 1
 
 [node name="PauseWindow" parent="." instance=ExtResource( 5 )]
-margin_left = 40.0
-margin_top = 512.0
-margin_right = 39.92
-margin_bottom = 511.68
+anchor_left = 0.056
+anchor_top = 0.4
+anchor_right = 0.944
+anchor_bottom = 0.619
+margin_left = -0.32
+margin_right = 0.319946
 mouse_filter = 1
 
 [node name="VictoryWindow" parent="." instance=ExtResource( 10 )]

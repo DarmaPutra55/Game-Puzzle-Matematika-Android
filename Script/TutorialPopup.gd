@@ -25,5 +25,9 @@ func _on_BtnClose_pressed():
 	for n in imgBox.get_child_count() - 1:
 		imgBox.get_child(n+1).set_visible(false)
 	currentTutorial = 0
-	get_tree().set_quit_on_go_back(true)	
 	hide()
+
+func _notification(what):
+	if(what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST):
+		if(visible):
+			hide()

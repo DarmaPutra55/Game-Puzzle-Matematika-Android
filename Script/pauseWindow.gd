@@ -18,19 +18,19 @@ func setWallNode(setWall):
 	wallNode = setWall
 
 func _on_Kembali_pressed():
-	self.hide()
+	hide()
 	get_tree().paused = false
 
 
 func _on_Ulang_pressed():
-	self.hide()
+	hide()
 	wallNode.closeWall()
 	yield(wallNode, "wallDone")
 	get_tree().reload_current_scene()
 
 
 func _on_Menu_pressed():
-	self.hide()
+	hide()
 	wallNode.closeWall()
 	yield(wallNode, "wallDone")
 	get_tree().change_scene("res://Scene/mainMenu.tscn")

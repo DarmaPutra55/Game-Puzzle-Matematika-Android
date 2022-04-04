@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Script/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Font/DynamicFont.tres" type="DynamicFont" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Scene/credit.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scene/wall.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scene/TutorialPopup.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scene/StageSelect.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scene/ExitPopUp.tscn" type="PackedScene" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -318,6 +320,26 @@ __meta__ = {
 [node name="CreditPopup" parent="." instance=ExtResource( 12 )]
 
 [node name="TutorialPopup" parent="." instance=ExtResource( 14 )]
+
+[node name="stageSelectPopup" parent="." instance=ExtResource( 15 )]
+anchor_left = 0.086
+anchor_top = 0.331
+anchor_right = 0.919
+anchor_bottom = 0.644
+margin_left = 0.079998
+margin_top = 0.319946
+margin_right = 0.320007
+margin_bottom = -0.320129
+
+[node name="ExitPopup" parent="." instance=ExtResource( 16 )]
+anchor_left = 0.087
+anchor_top = 0.332
+anchor_right = 0.921
+anchor_bottom = 0.645
+margin_left = 0.359997
+margin_top = 0.039978
+margin_right = -0.120178
+margin_bottom = -0.600037
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )

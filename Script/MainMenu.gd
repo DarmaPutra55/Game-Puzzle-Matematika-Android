@@ -1,4 +1,5 @@
 extends Control
+
 onready var stageNode = get_node("ColorRect/PanelContainer/VBoxContainer/PanelMenu/ScrollContainer")
 onready var highscoreNode = get_node("ColorRect/PanelContainer/VBoxContainer/PanelMenu/MenuHighScore")
 onready var optionNode = get_node("ColorRect/PanelContainer/VBoxContainer/PanelMenu/OptionMenu")
@@ -9,6 +10,9 @@ onready var highscoreAreaNode = get_node("ColorRect/PanelContainer/VBoxContainer
 onready var credit = get_node("CreditPopup")
 onready var wall = get_node("Wall")
 onready var tutorial = get_node("TutorialPopup")
+onready var stageSelectMenu = get_node("stageSelectPopup")
+onready var exitMenu = get_node("ExitPopup")
+
 var highscoreBox_resource = preload("res://Scene/highScoreBox.tscn")
 var stageBox_resource = preload("res://Scene/stageButtonGroup.tscn")
 var tingkat = {
@@ -26,12 +30,12 @@ var stage = [];
 # Called when the node enters the scene tree for the first time.
 func _ready():
 		get_tree().paused = false
-		get_tree().set_quit_on_go_back(true)
 		_setStageNumber()
 		_setHighScore()
 		_loadStageBox()
 		_loadStageSelect()
 		_wallAnimation()
+		stageSelectMenu.setWall(wall)
 		optionNode.setWallNode(wall)
 		optionNode.setTutorialNode(tutorial)
 		optionNode.setCreditNode(credit)
@@ -52,7 +56,7 @@ func _wallAnimation():
 	get_tree().paused = false
 
 func _setHighScore():
-	var temp_highscoreDictionary = Database.retriveHighscore()
+	var temp_highscoreDictionary = Database.retriveDataFromDB(null, "Highscore")
 	for stage in temp_highscoreDictionary.size():
 		var highscorebox = highscoreBox_resource.instance()
 		highscorebox.setText(stage+1, 
@@ -93,7 +97,8 @@ func _loadStageSelect():
 				var stageButton = stageArea.get_child(stageRow).get_child(0).get_child(0).get_child(0).get_child(stageBox)
 				if(currentButtonDone < stage[kelas][tingkat.get(kelas)]): #Selama jumlah button yang diberi nilai dibawah dari jumlah kelas saat ini(Contoh: SD, SMP, SMA) perulangan terus dilakukan
 					stageButton.setValue(stageNumber)
-					stageButton.setWallNode(wall)
+					stageButton.setStageSelectMenuNode(stageSelectMenu)
+					stageButton.setHighscoreValue(Database.retriveDataFromDB(stageNumber, "Highscore"))
 					stageButton.setStageText()
 					currentButtonDone +=1
 					if(!Database.checkStageUnlocked("Stage"+ String(stageNumber))):
@@ -107,17 +112,26 @@ func _loadStageSelect():
 #	pass
 
 func _on_StageMenuButton_pressed():
-	highscoreNode.hide()
-	optionNode.hide()
-	stageNode.show()
+	if(!stageSelectMenu.visible):
+		highscoreNode.hide()
+		optionNode.hide()
+		stageNode.show()
 
 func _on_HighscoreMenuButton_pressed():
-	stageNode.hide()
-	optionNode.hide()
-	highscoreNode.show()
+	if(!stageSelectMenu.visible):
+		stageNode.hide()
+		optionNode.hide()
+		highscoreNode.show()
 
 
 func _on_OptionMenuButton_pressed():
-	stageNode.hide()
-	highscoreNode.hide()
-	optionNode.show()
+	if(!stageSelectMenu.visible):
+		stageNode.hide()
+		highscoreNode.hide()
+		optionNode.show()
+		
+func _notification(what):
+	if(what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST):
+		if(!exitMenu.visible && !tutorial.visible && !stageSelectMenu.visible && !credit.visible):
+			get_tree().paused = true
+			exitMenu.show()
