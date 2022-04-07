@@ -1,6 +1,8 @@
 extends Control
 onready var player = get_node("MainControl/Player")
-onready var text = get_node("MainControl/FullPanel/EnemySpawnPoint/SpawnContainer")
+onready var answerText = get_node("MainControl/FullPanel/Button/ButtonContainer/LowerButton")
+onready var questionText = get_node("MainControl/FullPanel/Question/QuestionPanel")
+onready var spawnArea = get_node("MainControl/FullPanel/EnemySpawnPoint/SpawnContainer")
 onready var status = get_node("MainControl/FullPanel/Button/ButtonContainer/UpperButton/StatusContainer")
 onready var pause = get_node("PauseWindow")
 onready var victory = get_node("VictoryWindow")
@@ -34,7 +36,8 @@ func _ready():
 	randomize()
 	_randomizeStageData()
 	_setWallForChild()
-	text.hideAllText()
+	questionText.hideQuestionText()
+	answerText.hideAnswerText()
 	_getHighscore()
 	wall.openWall()
 	_newGame()
@@ -63,11 +66,11 @@ func _newGame():
 	
 
 func _spawnEnemy(currentWaveAnswer):
-	for n in text.get_child_count():
-		var currentText = text.get_child(n).get_child(0).get_text()
+	for n in spawnArea.get_child_count():
+		var currentText = answerText.get_child(0).get_child(n).get_child(0).get_text()
 		if currentText != String(currentWaveAnswer):
 			var asteroid = asteroid_resource.instance()
-			asteroid.set_pos(text.get_child(n).position)
+			asteroid.set_pos(spawnArea.get_child(n).position)
 			gamearea.add_child(asteroid)
 
 
@@ -86,9 +89,10 @@ func _on_RightButton_pressed():
 func _on_CooldownTimer_timeout():
 	$Timer/ClearTimer.start()
 	$Timer/QuestionTimer.start()
-	text.questionSelection(stageData[levelWave]["Question"])
-	text.answerAreaSelection(stageData[levelWave]["Answer"])
-	text.showAllText()
+	questionText.setQuestionText(stageData[levelWave]["Question"])
+	answerText.setAnswerText(stageData[levelWave]["Answer"])
+	questionText.showQuestionText()
+	answerText.showAnswerText()
 
 
 func _on_QuestionTimer_timeout():
@@ -97,21 +101,21 @@ func _on_QuestionTimer_timeout():
 		_answerSelected()
 
 func _checkPlayerAnswer(currentWaveAnswer):
-	for n in text.get_child_count():
-		var answerText = text.get_child(n).get_child(0)
-		if answerText.get_text() == String(currentWaveAnswer):
-			var answerTextPos = answerText.get_parent().position
+	for n in answerText.get_child(0).get_child_count():
+		var currentAnswerText = answerText.get_child(0).get_child(n).get_child(0)
+		if currentAnswerText.get_text() == String(currentWaveAnswer):
+			var answerTextPos = currentAnswerText.returnAnswerPosition(n)
 			player.answerPositionCheck(answerTextPos)
 
 func _changeTextColor(currentWaveAnswer):
-	for n in text.get_child_count():
-		var answerText = text.get_child(n).get_child(0)
+	for n in answerText.get_child(0).get_child_count():
+		var currentAnswerText = answerText.get_child(0).get_child(n).get_child(0)
 		if(currentWaveAnswer != null):
-			if answerText.get_text() == String(currentWaveAnswer):
-				answerText.add_color_override("font_color", 
+			if currentAnswerText.get_text() == String(currentWaveAnswer):
+				currentAnswerText.add_color_override("font_color", 
 				Color(1, 0.84, 0, 1))
 		else:
-			answerText.add_color_override("font_color", 
+			currentAnswerText.add_color_override("font_color", 
 			Color( 1, 1, 1, 1 ))
 
 func _on_ClearTimer_timeout():
@@ -119,7 +123,8 @@ func _on_ClearTimer_timeout():
 
 func _victory():
 	$Timer/ClearTimer.stop()
-	text.hideAllText()
+	questionText.hideQuestionText()
+	answerText.hideAnswerText()
 	$MainControl/FullPanel.visible = false
 	player.move(Vector2(player.position.x, -180), 1)
 	$Timer/VictoryTimer.start()
@@ -169,7 +174,8 @@ func _pause():
 
 func _on_AnswerTimer_timeout():
 	player.movementLock = false
-	text.hideAllText()
+	questionText.hideQuestionText()
+	answerText.hideAnswerText()
 	levelWave += 1
 	_changeTextColor(null)
 	if(levelWave < 5):

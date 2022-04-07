@@ -34,7 +34,7 @@ func showMovementState():
 	return is_moving
 
 func answerPositionCheck(aPos):
-	if position.x == aPos.x:
+	if position.x == aPos:
 		correctSFX.play()
 
 func _on_Area2D_area_entered(area):

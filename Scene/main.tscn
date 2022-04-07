@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Script/Global.gd" type="Script" id=1]
 [ext_resource path="res://Scene/player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Font/DynamicFontSmaller.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Script/StatusUpdate.gd" type="Script" id=7]
 [ext_resource path="res://Script/Text.gd" type="Script" id=8]
+[ext_resource path="res://Script/TextQuestion.gd" type="Script" id=9]
 [ext_resource path="res://Scene/victoryWindow.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scene/gameOver.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Music/StageMusic.ogg" type="AudioStream" id=12]
@@ -17,6 +18,7 @@
 [ext_resource path="res://Font/DynamicFonteXTRA.tres" type="DynamicFont" id=16]
 [ext_resource path="res://Scene/wall.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Font/DynamicFontLarge.tres" type="DynamicFont" id=18]
+[ext_resource path="res://Script/AnswerLabel.gd" type="Script" id=19]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -114,6 +116,7 @@ __meta__ = {
 margin_right = 720.0
 margin_bottom = 200.0
 custom_styles/panel = SubResource( 2 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -164,7 +167,6 @@ __meta__ = {
 margin_top = 200.0
 margin_right = 720.0
 custom_styles/panel = SubResource( 8 )
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -175,39 +177,10 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="LeftSpawnText" type="Label" parent="MainControl/FullPanel/EnemySpawnPoint/SpawnContainer/LeftSpawn"]
-margin_left = -60.0
-margin_top = 30.0
-margin_right = 24.0
-margin_bottom = 141.0
-rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = ExtResource( 16 )
-text = "0"
-align = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
 [node name="MiddleSpawn" type="Node2D" parent="MainControl/FullPanel/EnemySpawnPoint/SpawnContainer"]
 position = Vector2( 360, 0 )
 __meta__ = {
 "_edit_group_": true
-}
-
-[node name="MiddleSpawnText" type="Label" parent="MainControl/FullPanel/EnemySpawnPoint/SpawnContainer/MiddleSpawn"]
-margin_left = -35.0
-margin_top = 30.0
-margin_right = 4.0
-margin_bottom = 141.0
-rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = ExtResource( 16 )
-text = "0"
-align = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
 }
 
 [node name="RightSpawn" type="Node2D" parent="MainControl/FullPanel/EnemySpawnPoint/SpawnContainer"]
@@ -216,26 +189,13 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="RightSpawnText" type="Label" parent="MainControl/FullPanel/EnemySpawnPoint/SpawnContainer/RightSpawn"]
-margin_left = -20.0
-margin_top = 30.0
-margin_right = 44.0
-margin_bottom = 141.0
-rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = ExtResource( 16 )
-text = "0"
-align = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Button" type="Node2D" parent="MainControl/FullPanel"]
 
 [node name="ButtonContainer" type="VBoxContainer" parent="MainControl/FullPanel/Button"]
 margin_top = 200.0
 margin_right = 720.0
 margin_bottom = 1280.0
+custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -296,79 +256,92 @@ __meta__ = {
 }
 
 [node name="ButtonSeperator" type="PanelContainer" parent="MainControl/FullPanel/Button/ButtonContainer"]
-margin_top = 804.0
+margin_top = 800.0
 margin_right = 720.0
-margin_bottom = 818.0
+margin_bottom = 814.0
 
 [node name="LowerButton" type="HBoxContainer" parent="MainControl/FullPanel/Button/ButtonContainer"]
-margin_top = 822.0
+margin_top = 814.0
 margin_right = 720.0
-margin_bottom = 1157.0
-rect_min_size = Vector2( 0, 335 )
-
-[node name="LeftButton" type="Button" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton"]
-margin_right = 237.0
-margin_bottom = 335.0
-rect_min_size = Vector2( 237, 0 )
-flat = true
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Label" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton/LeftButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -200.0
-margin_bottom = -321.0
-rect_min_size = Vector2( 240, 335 )
-custom_fonts/font = ExtResource( 4 )
-text = "A"
-align = 1
-valign = 1
+margin_bottom = 1069.0
+rect_min_size = Vector2( 0, 255 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MiddleButton" type="Button" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton"]
+[node name="BtnWrapper" type="Node2D" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton"]
+position = Vector2( 0, -1022 )
+z_index = 2
+
+[node name="LeftButton" type="Button" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton/BtnWrapper"]
+margin_top = 1022.0
+margin_right = 237.0
+margin_bottom = 1357.0
+rect_min_size = Vector2( 237, 0 )
+flat = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton/BtnWrapper/LeftButton"]
+anchor_right = 1.013
+anchor_bottom = 1.0
+margin_right = -0.0810089
+rect_min_size = Vector2( 240, 335 )
+custom_fonts/font = ExtResource( 4 )
+align = 1
+valign = 1
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MiddleButton" type="Button" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton/BtnWrapper"]
 margin_left = 241.0
+margin_top = 1022.0
 margin_right = 477.0
-margin_bottom = 335.0
+margin_bottom = 1357.0
 rect_min_size = Vector2( 236, 0 )
 flat = true
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton/MiddleButton"]
+[node name="Label" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton/BtnWrapper/MiddleButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 240, 335 )
 custom_fonts/font = ExtResource( 4 )
-text = "B"
 align = 1
 valign = 1
+script = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RightButton" type="Button" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton"]
+[node name="RightButton" type="Button" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton/BtnWrapper"]
 margin_left = 481.0
+margin_top = 1022.0
 margin_right = 718.0
-margin_bottom = 335.0
+margin_bottom = 1357.0
 rect_min_size = Vector2( 237, 0 )
 flat = true
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton/RightButton"]
+[node name="Label" type="Label" parent="MainControl/FullPanel/Button/ButtonContainer/LowerButton/BtnWrapper/RightButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 230, 335 )
 custom_fonts/font = ExtResource( 4 )
-text = "C"
 align = 1
 valign = 1
+script = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -414,6 +387,7 @@ pause_mode = 2
 stream = ExtResource( 15 )
 
 [node name="Wall" parent="." instance=ExtResource( 17 )]
+z_index = 2
 
 [connection signal="timeout" from="Timer/QuestionTimer" to="." method="_on_QuestionTimer_timeout"]
 [connection signal="timeout" from="Timer/ClearTimer" to="." method="_on_ClearTimer_timeout"]
@@ -422,7 +396,7 @@ stream = ExtResource( 15 )
 [connection signal="timeout" from="Timer/VictoryTimer" to="." method="_on_VictoryTimer_timeout"]
 [connection signal="pressed" from="MainControl/FullPanel/Question/QuestionPanel/ColorRect/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="MainControl/FullPanel/Button/ButtonContainer/UpperButton" to="." method="_on_UpperButton_pressed"]
-[connection signal="pressed" from="MainControl/FullPanel/Button/ButtonContainer/LowerButton/LeftButton" to="." method="_on_LeftButton_pressed"]
-[connection signal="pressed" from="MainControl/FullPanel/Button/ButtonContainer/LowerButton/MiddleButton" to="." method="_on_MiddleButton_pressed"]
-[connection signal="pressed" from="MainControl/FullPanel/Button/ButtonContainer/LowerButton/RightButton" to="." method="_on_RightButton_pressed"]
+[connection signal="pressed" from="MainControl/FullPanel/Button/ButtonContainer/LowerButton/BtnWrapper/LeftButton" to="." method="_on_LeftButton_pressed"]
+[connection signal="pressed" from="MainControl/FullPanel/Button/ButtonContainer/LowerButton/BtnWrapper/MiddleButton" to="." method="_on_MiddleButton_pressed"]
+[connection signal="pressed" from="MainControl/FullPanel/Button/ButtonContainer/LowerButton/BtnWrapper/RightButton" to="." method="_on_RightButton_pressed"]
 [connection signal="hit" from="MainControl/Player" to="." method="_on_Player_hit"]
