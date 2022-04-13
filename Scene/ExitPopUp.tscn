@@ -99,5 +99,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ShowTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.05
+one_shot = true
+
 [connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/BtnYa" to="." method="_on_BtnYa_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/BtnTidak" to="." method="_on_BtnTidak_pressed"]

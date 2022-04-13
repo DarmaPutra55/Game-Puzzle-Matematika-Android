@@ -76,20 +76,24 @@ __meta__ = {
 [node name="Timer" type="Node2D" parent="."]
 
 [node name="QuestionTimer" type="Timer" parent="Timer"]
-wait_time = 6.0
+process_mode = 0
+wait_time = 5.0
 one_shot = true
 
 [node name="ClearTimer" type="Timer" parent="Timer"]
 
 [node name="CooldownTimer" type="Timer" parent="Timer"]
+process_mode = 0
 wait_time = 2.0
 one_shot = true
 
 [node name="AnswerTimer" type="Timer" parent="Timer"]
+process_mode = 0
 wait_time = 4.0
 one_shot = true
 
 [node name="VictoryTimer" type="Timer" parent="Timer"]
+process_mode = 0
 wait_time = 2.0
 one_shot = true
 

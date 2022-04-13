@@ -138,6 +138,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ShowTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.05
+one_shot = true
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Kembali" to="." method="_on_Kembali_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Ulang" to="." method="_on_Ulang_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Menu" to="." method="_on_Menu_pressed"]

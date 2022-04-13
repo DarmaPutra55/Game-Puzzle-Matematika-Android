@@ -17,7 +17,6 @@ _global_script_class_icons={
 config/name="ProjectSkripsi"
 run/main_scene="res://Scene/StartLoading.tscn"
 config/icon="res://icon.png"
-config/auto_accept_quit=false
 config/quit_on_go_back=false
 
 [autoload]

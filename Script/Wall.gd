@@ -12,11 +12,15 @@ func _ready():
 	pass # Replace with function body.
 
 func openWall():
+	if(!visible):
+		show()
 	var move_tween = get_node("Tween")
 	move_tween.interpolate_property(self, "position", position, Vector2(0, -1280), .5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	move_tween.start()	
 	
 func closeWall():
+	if(!visible):
+		show()
 	var move_tween = get_node("Tween")
 	move_tween.interpolate_property(self, "position", position, Vector2(0, 0), .5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	move_tween.start()	
@@ -25,3 +29,4 @@ func closeWall():
 #	pass
 func _on_Tween_tween_all_completed():
 	emit_signal("wallDone")
+	hide()

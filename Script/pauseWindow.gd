@@ -28,9 +28,17 @@ func _on_Ulang_pressed():
 	yield(wallNode, "wallDone")
 	get_tree().reload_current_scene()
 
+func startTimer():
+	$ShowTimer.start()
 
 func _on_Menu_pressed():
 	hide()
 	wallNode.closeWall()
 	yield(wallNode, "wallDone")
 	get_tree().change_scene("res://Scene/mainMenu.tscn")
+
+func _notification(what):
+	if(what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST):
+		if(visible && $ShowTimer.time_left == 0):
+			get_tree().paused = false
+			hide()

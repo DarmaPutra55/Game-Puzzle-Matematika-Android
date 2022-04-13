@@ -15,6 +15,8 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func startTimer():
+	$ShowTimer.start()
 
 func _on_BtnYa_pressed():
 	get_tree().quit()
@@ -22,3 +24,8 @@ func _on_BtnYa_pressed():
 func _on_BtnTidak_pressed():
 	get_tree().paused = false
 	hide()
+
+func _notification(what):
+	if(what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST):
+		if(visible && $ShowTimer.time_left == 0):
+			get_tree().quit()

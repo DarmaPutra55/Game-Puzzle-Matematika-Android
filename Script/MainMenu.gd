@@ -132,6 +132,7 @@ func _on_OptionMenuButton_pressed():
 		
 func _notification(what):
 	if(what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST):
-		if(!exitMenu.visible && !tutorial.visible && !stageSelectMenu.visible && !credit.visible):
+		if(!exitMenu.visible && !tutorial.visible && !stageSelectMenu.visible && !credit.visible && !wall.visible):
 			get_tree().paused = true
+			exitMenu.startTimer()
 			exitMenu.show()

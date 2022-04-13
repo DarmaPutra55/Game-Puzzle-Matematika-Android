@@ -54,7 +54,7 @@ func _randomizeStageData():
 
 func _process(delta):
 	if(levelWave < 5):
-		var currentTime = String(int(round($Timer/QuestionTimer.get_time_left())))
+		var currentTime = String(int(ceil($Timer/QuestionTimer.get_time_left()))) #Use ceil next time instead of round!
 		questionTimer.set_text(currentTime)
 		status.updateStatusText(clearTime, playerHP)
 		
@@ -97,7 +97,6 @@ func _on_CooldownTimer_timeout():
 
 func _on_QuestionTimer_timeout():
 	if levelWave < 5:
-		clearTime += 1
 		_answerSelected()
 
 func _checkPlayerAnswer(currentWaveAnswer):
@@ -204,9 +203,11 @@ func _on_VictoryTimer_timeout():
 
 func _on_Button_pressed():
 	if(!pause.visible):
+		pause.startTimer()
 		_pause()
 	
 func _notification(what):
 	if(what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST):
-		if(levelWave < 5 && !pause.visible && !gameover.visible && !victory.visible):
+		if(levelWave < 5 && !pause.visible && !gameover.visible && !victory.visible && !wall.visible):
+			pause.startTimer()
 			_pause()
