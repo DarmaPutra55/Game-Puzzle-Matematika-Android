@@ -1,5 +1,6 @@
 extends Control
 
+onready var mainMenu = get_node("ColorRect")
 onready var stageNode = get_node("ColorRect/PanelContainer/VBoxContainer/PanelMenu/ScrollContainer")
 onready var highscoreNode = get_node("ColorRect/PanelContainer/VBoxContainer/PanelMenu/MenuHighScore")
 onready var optionNode = get_node("ColorRect/PanelContainer/VBoxContainer/PanelMenu/OptionMenu")
@@ -12,6 +13,7 @@ onready var wall = get_node("Wall")
 onready var tutorial = get_node("TutorialPopup")
 onready var stageSelectMenu = get_node("stageSelectPopup")
 onready var exitMenu = get_node("ExitPopup")
+
 
 var highscoreBox_resource = preload("res://Scene/highScoreBox.tscn")
 var stageBox_resource = preload("res://Scene/stageButtonGroup.tscn")
@@ -99,6 +101,7 @@ func _loadStageSelect():
 					stageButton.setValue(stageNumber)
 					stageButton.setStageSelectMenuNode(stageSelectMenu)
 					stageButton.setHighscoreValue(Database.retriveDataFromDB(stageNumber, "Highscore"))
+					stageButton.setMainMenu(mainMenu)
 					stageButton.setStageText()
 					currentButtonDone +=1
 					if(!Database.checkStageUnlocked("Stage"+ String(stageNumber))):
@@ -130,6 +133,7 @@ func _on_OptionMenuButton_pressed():
 		highscoreNode.hide()
 		optionNode.show()
 		
+
 func _notification(what):
 	if(what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST):
 		if(!exitMenu.visible && !tutorial.visible && !stageSelectMenu.visible && !credit.visible && !wall.visible):

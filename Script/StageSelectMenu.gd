@@ -5,6 +5,7 @@ onready var stageHighscoreText = get_node("VBoxContainer/StageSelectHighscoreTex
 
 var wallNode
 var stageValue
+var mainMenu
 
 
 # Declare member variables here. Examples:
@@ -15,6 +16,9 @@ var stageValue
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+func setMainMenu(setMain):
+	mainMenu = setMain
 
 func setWall(Wall):
 	wallNode = Wall
@@ -35,10 +39,13 @@ func setStageHighscoreText(Highscore):
 
 
 func _on_BtnKembali_pressed():
+	mainMenu.modulate = Color("#ffffff")
+	get_tree().paused = false
 	hide()
 
 
 func _on_BtnMain_pressed():
+	hide()
 	Global.stage = stageValue
 	wallNode.closeWall()
 	yield(wallNode, "wallDone")
@@ -47,4 +54,6 @@ func _on_BtnMain_pressed():
 func _notification(what):
 	if(what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST):
 		if(visible):
+			mainMenu.modulate = Color("#ffffff")
+			get_tree().paused = false
 			hide()

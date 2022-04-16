@@ -9,6 +9,7 @@
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="stageSelectPopup" type="Popup"]
+pause_mode = 2
 anchor_right = 0.833
 anchor_bottom = 0.312
 margin_right = 0.239929
