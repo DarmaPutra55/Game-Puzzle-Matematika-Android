@@ -81,6 +81,8 @@ wait_time = 5.0
 one_shot = true
 
 [node name="ClearTimer" type="Timer" parent="Timer"]
+process_priority = 1
+process_mode = 0
 
 [node name="CooldownTimer" type="Timer" parent="Timer"]
 process_mode = 0

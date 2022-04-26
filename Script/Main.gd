@@ -57,7 +57,11 @@ func _process(delta):
 		var currentTime = String(int(ceil($Timer/QuestionTimer.get_time_left()))) #Use ceil next time instead of round!
 		questionTimer.set_text(currentTime)
 		status.updateStatusText(clearTime, playerHP)
-		
+		if((ceil($Timer/QuestionTimer.get_time_left())) > 0):
+			if($Timer/ClearTimer.is_stopped()):
+				$Timer/ClearTimer.start()
+		else:
+			$Timer/ClearTimer.stop()
 
 func _newGame():
 	player.start($MainControl/Player/StartPosition.position)
@@ -87,7 +91,7 @@ func _on_RightButton_pressed():
 
 
 func _on_CooldownTimer_timeout():
-	$Timer/ClearTimer.start()
+	#$Timer/ClearTimer.start()
 	$Timer/QuestionTimer.start()
 	questionText.setQuestionText(stageData[levelWave]["Question"])
 	answerText.setAnswerText(stageData[levelWave]["Answer"])
@@ -121,7 +125,7 @@ func _on_ClearTimer_timeout():
 	clearTime += 1
 
 func _victory():
-	$Timer/ClearTimer.stop()
+	#$Timer/ClearTimer.stop()
 	questionText.hideQuestionText()
 	answerText.hideAnswerText()
 	$MainControl/FullPanel.visible = false
@@ -164,7 +168,6 @@ func _answerSelected():
 	_spawnEnemy(stageData[levelWave]["Answer"])
 	_changeTextColor(stageData[levelWave]["Answer"])
 	_checkPlayerAnswer(stageData[levelWave]["Answer"])
-	$Timer/ClearTimer.stop()
 	$Timer/AnswerTimer.start()
 
 func _pause():

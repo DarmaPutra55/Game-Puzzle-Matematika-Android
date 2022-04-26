@@ -1,9 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Font/DynamicFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Script/stageSelect.gd" type="Script" id=2]
 [ext_resource path="res://Style/stageButtonRound.tres" type="StyleBox" id=3]
 [ext_resource path="res://Style/stageButtonRoundDisable.tres" type="StyleBox" id=4]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 1, 0.0901961, 0.0901961, 1, 0.564706, 0.290196, 0.290196, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = SubResource( 3 )
+region_rect = Rect2( 0, 0, 2048, 1 )
+
+[sub_resource type="Theme" id=1]
+Button/styles/hover = null
+Button/styles/normal = SubResource( 4 )
 
 [node name="Control" type="Control"]
 anchor_right = 0.278
@@ -12,6 +26,7 @@ margin_right = -0.160019
 margin_bottom = 0.23999
 rect_min_size = Vector2( 200, 150 )
 mouse_filter = 1
+theme = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -34,7 +49,7 @@ __meta__ = {
 
 [node name="ClickDelay" type="Timer" parent="."]
 process_mode = 0
-wait_time = 0.1
+wait_time = 0.25
 one_shot = true
 
 [connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TestTutorial5.jpg-9b3ade8f5eff45ce7de58182113d5750.stex"
+path="res://.import/Tutorial5.jpg-1b701ffb2163db5cb4a7e0ac70e153b7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Image/TestTutorial5.jpg"
-dest_files=[ "res://.import/TestTutorial5.jpg-9b3ade8f5eff45ce7de58182113d5750.stex" ]
+source_file="res://Image/Tutorial5.jpg"
+dest_files=[ "res://.import/Tutorial5.jpg-1b701ffb2163db5cb4a7e0ac70e153b7.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
