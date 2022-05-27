@@ -6,6 +6,7 @@ Cara Install:
 
 1. Download APK di Releases.
 2. Install APK di Android/Emulator (Pastikan Android mengijinkan installasi lewat sumber yang tidak di kenal).
+3. Game siap untuk dimainkan.
 
 Cara Bermain:
 
