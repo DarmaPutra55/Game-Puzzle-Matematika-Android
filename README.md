@@ -2,6 +2,11 @@
 Sebuah game puzzle matematika untuk android yang dibuat dengan menggunakan Godot game engine. 
 Tujuan utama dari pembuatan game ini adalah untuk edukasi dan non-komersial. Pembuat tidak memperoleh keuntungan materi sepeserpun dari game ini.
 
+Cara Install:
+
+1. Download APK di Releases.
+2. Install APK di Android/Emulator (Pastikan Android mengijinkan installasi lewat sumber yang tidak di kenal).
+
 Cara Bermain:
 
 Pemain mengendalikan sebuah pesawat luar angkasa dimana pemain harus menghindari meteor dengan cara memilih jawaban dari pertanyaan yang tampil di bagian paling atas layar. Pesawat pemain memiliki 3 nyawa dan setiap kali pemain memilih jawaban yang salah maka pesawat pemain akan tertimpa meteor dan nyawa pesawat dikurangi 1.
