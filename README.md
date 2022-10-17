@@ -40,7 +40,7 @@ Semakin cepat pemain menjawab pertanyaan maka semakin tinggi nilai yang diperole
 
 ![Victory Screen](ScreenShot/Victory.jpg)
 
-Pemain bisa menekan tombol "≡" untuk mempause game. Lewat menu pause pemain bisa mengulang stage, kembali ke pemilihan stage atau melanjutkan bermain stage.
+Pemain bisa menekan tombol "⦀" untuk mempause game. Lewat menu pause pemain bisa mengulang stage, kembali ke pemilihan stage atau melanjutkan bermain stage.
 
 ![Pause Screen](ScreenShot/Pause.jpg)
   
