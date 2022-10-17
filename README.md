@@ -22,7 +22,7 @@ Tujuan utama dari pembuatan game ini adalah untuk edukasi dan non-komersial. Pem
 
 Pemain mengendalikan sebuah pesawat luar angkasa dimana pemain harus menghindari meteor dengan cara memilih jawaban dari pertanyaan yang tampil di bagian paling atas layar. Pesawat pemain memiliki 3 nyawa dan setiap kali pemain memilih jawaban yang salah maka pesawat pemain akan tertimpa meteor dan nyawa pesawat dikurangi 1.
 
-![Gameplay 1](ScreenShot/Gameplay.jpg)
+![Gameplay 1](ScreenShot/Gameplay1.jpg)
 
 ![Gameplay 2](ScreenShot/Gameplay2.jpg)
 
